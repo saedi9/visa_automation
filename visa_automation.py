@@ -15,7 +15,13 @@ class VisaAutomation:
   def start_browser(self):
     """Initialize the WebDriver and navigate to the URL."""
     print('Starting browser...')
-    self.browser = webdriver.Firefox()
+    user_data_dir = 'C:/Users/Saedi/AppData/Local/Google/Chrome/User Data'
+    profile = 'Default'
+    chrome_options = Options()
+    chrome_options.add_argument(f"user-data-dir={user_data_dir}")
+    chrome_options.add_argument(f"profile-directory={profile}")
+
+    self.browser = webdriver.Chrome(options=chrome_options)
     self.browser.get('https://evisatraveller.mfa.ir/en/request/applyrequest/')
 
   def start_process(self):
